@@ -1,0 +1,109 @@
+---
+title: "Classwork/ Week4, Jorge"
+author: "Jorge Arauz"
+date: "2/2/2022"
+output: word_document
+---
+
+
+Question #1
+For the lists given below, show and use R code (a map function) to iteratively 
+find the square of the sums across the vectors
+
+```{r}
+library(tidyverse)
+a <- list(2, 4, 5, 9, 1)
+b <- list(8, 7, 2, 8, 3)
+c <- list(1, 8, 5, 4, 2)
+```
+
+```{r}
+pmap_dbl(list(a,b,c), sum) -> question_1
+question_1^2
+```
+
+
+
+Question #2
+Using the data table below, use and show R code that will output a statement that
+is descriptive for all rows of the data table.
+The first row is given below.  Your code should produce the other specific statements.
+  John who is Male, has a salary that is 65000 dollars per year.
+
+
+```{r}
+tribble( ~Student,  ~Gender,    ~Salary,
+          "John",   "Male",       65000,
+          "Alice",  "Female",    73000,
+          "Juan",   "Male",       66000,
+          "Beth",  "Female",    71500,
+          "Denise", "Female",  82000
+) -> table
+table
+```
+
+```{r}
+table %>% 
+  pmap_chr(~ str_glue("{..1} who is a {..2}, has a salary that is {..3} dollars per year"))
+```
+
+
+
+Question #3
+Write a nested loop that will produce a 5 by 5 matrix that whose matrix elements are sums of the corresponding columns and rows.
+
+```{r}
+matrix1 = matrix(nrow=5, ncol=5) # create a 5 x 5 matrix(5 rows and 5 columns)
+for(i in 1:nrow(matrix1))        #// Assigned a variable 'i' for each row
+{
+  for(j in 1:ncol(matrix1))      #// Assigned a variable 'j' for each column
+  {
+    matrix1[i,j] = i+j           #// calculating product of two indeces
+  }
+}
+print(matrix1)
+```
+
+
+
+Question #4
+Use for loop coding to produce the number sequence shown below: Note that the numbers 5 and 10 are missing
+
+1
+2
+3
+4
+6
+7
+8
+9
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+
+```{r}
+x <- 1:20
+for (val in x) {
+  if (val == 5){
+    next
+  }
+  if (val == 10){
+    next
+  }
+  print(val)
+}
+```
+
+
+
+
+
+
+

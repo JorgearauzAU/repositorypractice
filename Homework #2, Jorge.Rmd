@@ -1,0 +1,159 @@
+---
+title: "Untitled"
+author: "Jorge Arauz"
+date: "1/25/2022"
+output: word_document
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+
+
+Question #1
+
+Write a function that will find the sum of the natural log, the common log and a log of base 2 for any given positive number. Use your function to find answers for the first five even integers. Show all details and structure of your function.  You should get five answers. The first two answers are 1.994177 and 3.988354. (Your output should show the other three)
+
+
+```{r}
+function_log <- function(x) {
+  if(x < 0){
+    print("Please give a positive number")
+  } else {
+    y <- log(x) + log10(x) + log(x, base = 2)
+    return(y)
+    
+    }
+}
+
+
+function_log(2)
+function_log(4)
+function_log(6)
+function_log(8)
+function_log(10)
+
+for(i in seq(2, 10, 2)) {
+  print(function_log(i))
+}
+
+```
+
+
+
+Question #2 
+
+Use the if-else structure to print the statement "This is a big number" if the square of a value is greater than or equal to 100 and the following statement is printed if the square of the number is less than 100, "This is not a big number”. Use and show values of assignment and if-else structures that will output both statements.
+
+
+```{r}
+question_2 <- (5)^2 
+if (question_2 >= 100) {
+  print('This is a big number')
+} else {
+  print('This is not a big number')  
+}
+
+```
+
+
+
+Question #3
+
+For the following if-else-if coding structure, make an adjustment so that it prints "Team A won"
+
+team_A <- 2 # Number of goals scored by Team A
+team_B <- 2# Number of goals scored by Team B
+
+if (team_A > team_B){
+  print ("Team A won")
+} else if (team_A < team_B){
+  print ("Team B won")
+} else {
+  "Team A & B tied"
+}
+
+
+```{r}
+team_A <- 5 # Number of goals scored by Team A
+
+team_B <- 3 # Number of goals scored by Team B
+
+if (team_A > team_B){
+  print ("Team A has won")
+} else if (team_A < team_B){
+  print ("Team B has won")
+} else {
+  "Team A & B tied"
+}
+```
+
+
+
+Question #4
+
+Write an if- else if- else sequence of commands that will output the following statements and appropriate output; If a value is divisible by 3 and 5 the output statement is "divisible by Three and Five", If a value is divisible by 3 and 4, the output statement is "divisible by Three and Four, If a value is a number that does not fall into either category, the output statement should be  "neither". Use your function to show output statements for values 16, 45, and 24.
+
+
+```{r}
+x1 <- 16
+x2<- 45
+x3<- 24
+
+question_4 <- function(x) {
+  if (!(x %% 3) && !(x %% 5)) {
+    "Divisible by Three and Five"
+  } else if  (!(x %% 3) && !(x %% 4)) {
+    "Divisible by Three and Four"
+  } else {"Neither"
+  }}
+
+question_4(x1)
+question_4(x2)
+question_4(x3)
+```
+
+
+
+Question #5
+
+Use piping and a dplyr command show and use R code to produce the following modified mpg data table that contains only quantitative variables
+
+Now use the “special loop coding chunk”, illustrated in class, to produce the variance for all variables of the modified data table.
+
+
+```{r}
+df_question5 <- mpg %>% 
+  select(displ, cyl, cty, hwy)
+df_question5
+
+for(i in seq(1,4, 1)) {
+
+   print(paste("The variance is", as.numeric(var(df_question5[,i], na.rm = T))))
+  
+}
+```
+
+
+
+Question #6
+
+Construct a for loop (as illustrated in the notes) that will produce the difference between the cube and the square for each prime number between 10 and 30.  (There are 6 answers. The first answer is 1210, your for loop coding should produce the other five answers)
+
+
+```{r}
+# Formula= ((prime number 10:30))^3 - (prime number 10:30)^2)
+
+library(primes)
+
+generate_primes(min = 10, max = 30) -> prime_values
+
+for (i in prime_values) {
+  print((i^3)-(i^2))
+}
+```
+
+
+
